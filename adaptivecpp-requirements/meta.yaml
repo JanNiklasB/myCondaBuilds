@@ -1,11 +1,8 @@
 package:
-  name: adaptivecpp
+  name: adaptivecpp-requirements
   version: 25.10.0
 
 source:
-  - git_url: https://github.com/AdaptiveCpp/AdaptiveCpp.git
-    git_rev: v25.10.0
-    folder: adaptivecpp
   - git_url: https://github.com/llvm/llvm-project.git
     git_rev: llvmorg-19.1.7
     folder: llvm-project
@@ -19,11 +16,21 @@ requirements:
   # packages that need to be cross compatible, so linked depending on platform
   # so basically everything that we link against
   host:
-    - janniklasb::adaptivecpp-requirements
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cuda
+    - boost
+    - rocm-smi
+    - rocm-device-libs
   # packages that should be installed with this package,
   # entries here might be duplicated from above if needed
   run:
-    - janniklasb::adaptivecpp-requirements
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cuda
+    - boost
+    - rocm-smi
+    - rocm-device-libs
 
 test:
   files:
@@ -32,3 +39,4 @@ test:
     - cmake
     - ninja
     - compilers
+    - git
