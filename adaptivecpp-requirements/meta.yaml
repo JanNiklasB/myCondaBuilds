@@ -19,7 +19,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cuda
-    - boost
     - rocm-smi
     - rocm-device-libs
   # packages that should be installed with this package,
@@ -28,15 +27,14 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cuda
-    - boost
     - rocm-smi
     - rocm-device-libs
 
 test:
   files:
     - TestFiles/
+    - AdaptiveCpp/
   requires:
     - cmake
     - ninja
     - compilers
-    - git
