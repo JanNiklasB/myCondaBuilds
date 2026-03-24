@@ -19,7 +19,8 @@ requirements:
   # packages that need to be cross compatible, so linked depending on platform
   # so basically everything that we link against
   host:
-    - compilers
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cuda
     - boost
     - rocm-smi
@@ -32,3 +33,10 @@ requirements:
     - rocm-smi
     - rocm-device-libs
 
+test:
+  files:
+    - TestFiles/
+  requires:
+    - cmake
+    - ninja
+    - compilers
