@@ -1,0 +1,3 @@
+[submodule "adaptivecpp-requirements/AdaptiveCpp"]
+	path = adaptivecpp-requirements/AdaptiveCpp
+	url = https://github.com/AdaptiveCpp/AdaptiveCpp.git
