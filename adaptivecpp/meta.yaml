@@ -18,13 +18,25 @@ requirements:
   host:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - janniklasb::adaptivecpp-requirements
+    - janniklasb::llvm==19.1.7
+    - janniklasb::clang==19.1.7
+    - janniklasb::lld==19.1.7
+    - cuda
+    - rocm-smi
+    - rocm-device-libs
+    - rocm-opencl-runtime
   # packages that should be installed with this package,
   # entries here might be duplicated from above if needed
   run:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - janniklasb::adaptivecpp-requirements
+    - janniklasb::llvm==19.1.7
+    - janniklasb::clang==19.1.7
+    - janniklasb::lld==19.1.7
+    - cuda
+    - rocm-smi
+    - rocm-device-libs
+    - rocm-opencl-runtime
 
 test:
   files:

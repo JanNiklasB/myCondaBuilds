@@ -1,11 +1,5 @@
 set -ex
 
-# setting paths dependend on environment and situation
-: "${SRC_DIR:=$(pwd)}"  # $() is function call, : is equal to true and in this context just ensures we do not get errors
-
-cd $SRC_DIR
-ls $SRC_DIR
-
 # build llvm, lld and clang
 
 # llvm:
