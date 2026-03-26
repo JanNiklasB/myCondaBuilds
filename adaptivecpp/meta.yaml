@@ -25,6 +25,7 @@ requirements:
     - rocm-smi
     - rocm-device-libs
     - rocm-opencl-runtime
+    - intel-opencl-rt
   # packages that should be installed with this package,
   # entries here might be duplicated from above if needed
   run:
@@ -37,7 +38,8 @@ requirements:
     - rocm-smi
     - rocm-device-libs
     - rocm-opencl-runtime
-
+    - intel-opencl-rt
+    
 test:
   files:
     - TestFiles/

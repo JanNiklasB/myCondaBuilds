@@ -1,10 +1,13 @@
 set -ex
 
-# setting paths dependend on environment and situation
-: "${SRC_DIR:=$(pwd)}"  # $() is function call, : is equal to true and in this context just ensures we do not get errors
+# copy adaptivecpp to prefix folder
+cp -r $SRC_DIR/adaptivecpp/ $PREFIX/adaptivecpp/
+if [ -e $PREFIX/lib/clang/21/lib/x86_64-unknown-linux-gnu/ ]; then
+	mv $PREFIX/lib/clang/21/lib/x86_64-unknown-linux-gnu/ $PREFIX/lib/clang/21/lib/x86_64-conda-linux-gnu/
+fi
 
 # build adaptivecpp:
-cd $SRC_DIR/adaptivecpp/
+cd $PREFIX/adaptivecpp/
 mkdir build && cd build
 cmake .. -G Ninja \
 	-DCMAKE_PREFIX_PATH=$PREFIX \
@@ -14,7 +17,6 @@ cmake .. -G Ninja \
 	-DOPENCL_INCLUDE_DIR=$PREFIX/include/CL \
 	-DOPENCL_LIB_DIR=$PREFIX/lib \
 	-DCMAKE_INSTALL_PREFIX=$PREFIX \
-	-DLLVM_DIR=$CONDA_PREFIX/include/llvm \
 	-DROCM_DEVICE_LIBS_PATH=$PREFIX/lib/amdgcn/bitcode/
 
 cmake --build .
