@@ -10,14 +10,14 @@ source:
 requirements:
   # tools only required at build time
   build:
-    - cmake
-    - ninja
     - git
   # packages that need to be cross compatible, so linked depending on platform
   # so basically everything that we link against
   host:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - cmake
+    - ninja
     - janniklasb::llvm==19.1.7
     - janniklasb::clang==19.1.7
     - janniklasb::lld==19.1.7
@@ -31,6 +31,8 @@ requirements:
   run:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - cmake
+    - ninja
     - janniklasb::llvm==19.1.7
     - janniklasb::clang==19.1.7
     - janniklasb::lld==19.1.7

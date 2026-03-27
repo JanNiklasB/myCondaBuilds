@@ -1,12 +1,3 @@
-set -ex
-
-# copy adaptivecpp to prefix folder
-cp -r $SRC_DIR/adaptivecpp/ $PREFIX/adaptivecpp/
-if [ -e $PREFIX/lib/clang/21/lib/x86_64-unknown-linux-gnu/ ]; then
-	mv $PREFIX/lib/clang/21/lib/x86_64-unknown-linux-gnu/ $PREFIX/lib/clang/21/lib/x86_64-conda-linux-gnu/
-fi
-
-# build adaptivecpp:
 cd $PREFIX/adaptivecpp/
 mkdir build && cd build
 cmake .. -G Ninja \
@@ -18,9 +9,5 @@ cmake .. -G Ninja \
 	-DOPENCL_LIB_DIR=$PREFIX/lib \
 	-DCMAKE_INSTALL_PREFIX=$PREFIX \
 	-DROCM_DEVICE_LIBS_PATH=$PREFIX/lib/amdgcn/bitcode/
-
 cmake --build .
 cmake --install .
-cd $PREFIX/adaptivecpp/
-rm -rf build
-
