@@ -1,0 +1,1 @@
+conda build -m conda_build_config.yaml -c janniklasb -c conda-forge . --numpy 2

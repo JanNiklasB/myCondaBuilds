@@ -1,0 +1,44 @@
+package:
+  name: xpointanalysis
+  version: 1.0.0
+
+source:
+  git_url: git@gitlab.ruhr-uni-bochum.de:tp4/diffusion/xpointfieldanalysis.git
+  folder: xpointanalysis
+
+requirements:
+  build:
+    - git
+    - cmake
+    - ninja
+    - pybind11
+    - pybind11-stubgen
+    - swig
+  
+  host:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    # crpropa requirements
+    - fftw
+    - hdf5
+    - zlib
+    # python requirements
+    - python
+    - numpy >=1.26
+    - pandas
+    - tqdm
+    - pybind11-stubgen
+
+  run:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+     # crpropa requirements
+    - fftw
+    - hdf5
+    - zlib
+    # python requirements
+    - python
+    - numpy >=1.26
+    - pandas
+    - tqdm
+    - hdf5
