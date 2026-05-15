@@ -1,1 +1,1 @@
-conda build -m conda_build_config.yaml -c conda-forge -c janniklasb .
+conda build -m conda_build_config.yaml -c janniklasb -c conda-forge .

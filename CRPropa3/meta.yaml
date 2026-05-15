@@ -26,7 +26,6 @@ requirements:
     - hdf5
     - muparser
     - eigen
-    - janniklasb::quimby
     # python requirements
     - python
     - numpy >=1.26,<3
@@ -37,7 +36,6 @@ requirements:
     - hdf5
     - muparser
     - eigen
-    - janniklasb::quimby
     # python requirements
     - python
     - numpy >=1.26,<3
