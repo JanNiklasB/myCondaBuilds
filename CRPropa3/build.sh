@@ -25,11 +25,20 @@ cmake .. -G Ninja \
 	-DFAST_WAVES=ON \
 	-DINSTALL_EIGEN=OFF \
 	-DOMP_SCHEDULE=dynamic \
-	-DSIMD_EXTENSIONS=native \
+	-DSIMD_EXTENSIONS=avx+fma \
 	-DUSE_ABSOLUTE_RPATH=ON
 cmake --build .
 cmake --install .
 $PREFIX/bin/pybind11-stubgen -o ${SP_DIR} crpropa
+# copy tests to share folder so user can test crpropa:
+mkdir $PREFIX/share/crpropa/test/
+for file in test*
+do
+	cp $file $PREFIX/share/crpropa/test/
+done
+cp CTestTestfile.cmake $PREFIX/share/crpropa/test/
+echo 'ctest --test-dir ${PREFIX}/share/crpropa/test/ --output-on-failure' > $PREFIX/bin/testCRPropa
+chmod +x $PREFIX/bin/testCRPropa
 
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.

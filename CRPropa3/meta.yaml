@@ -31,25 +31,19 @@ requirements:
     - numpy >=1.26,<3
 
   run:
-     # crpropa requirements
+    # crpropa requirements
     - fftw
     - hdf5
     - muparser
     - eigen
+    # cmake required for tests
+    - cmake
     # python requirements
     - python
     - numpy >=1.26,<3
 
 test:
-  source_files:
-    - crpropa
   imports:
     - crpropa
-  requires:
-    - compilers
-    - git
-    - cmake
-    - ninja
-    - swig
-    - zlib
-    - gperftools
+  commands:
+    - testCRPropa
