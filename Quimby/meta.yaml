@@ -1,0 +1,27 @@
+package:
+  name: quimby
+  version: 1.0.0
+
+source:
+  git_url: https://gitlab.ruhr-uni-bochum.de/janb/quimby.git
+  folder: quimby
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake
+    - ninja
+    - swig
+  
+  host:
+    # host only requirements
+    - pybind11-stubgen
+    # python requirements
+    - python
+    - numpy >=1.26,<3
+
+  run:
+    # python requirements
+    - python
+    - numpy >=1.26,<3
