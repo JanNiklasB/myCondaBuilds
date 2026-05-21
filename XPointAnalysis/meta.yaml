@@ -11,6 +11,7 @@ requirements:
     - git
     - cmake
     - ninja
+    - pkgconfig
     - pybind11
     - pybind11-stubgen
     - swig
@@ -36,6 +37,7 @@ requirements:
     - fftw
     - hdf5
     - zlib
+    - pkgconfig
     # python requirements
     - python
     - numpy >=1.26

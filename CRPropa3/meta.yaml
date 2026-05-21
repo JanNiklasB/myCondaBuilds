@@ -15,6 +15,7 @@ requirements:
     - cmake
     - ninja
     - swig
+    - pkgconfig
   
   host:
     # host only requirements
@@ -39,6 +40,7 @@ requirements:
     # cmake required for tests
     - cmake
     # python requirements
+    - pkgconfig
     - python
     - numpy >=1.26,<3
 
