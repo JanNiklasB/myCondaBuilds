@@ -47,7 +47,7 @@ jobs:
           conda init &> /dev/null
           cd binder
           conda config --set anaconda_upload yes
-          conda build -m conda_build_config.yaml -c conda-forge . -k \
+          conda build -c conda-forge . -k \
             --user $accountName \
             --token $token \
             | tee build.log
@@ -80,7 +80,7 @@ jobs:
           conda init &> /dev/null
           cd binder
           conda config --set anaconda_upload yes
-          conda build -m conda_build_config.yaml -c conda-forge . -k \
+          conda build -c conda-forge . -k \
             --user $accountName \
             --token $token \
             | tee build.log
@@ -121,7 +121,7 @@ jobs:
           set -ex
           cd binder
           conda config --set anaconda_upload yes
-          conda build -m conda_build_config.yaml -c conda-forge . -k \
+          conda build -c conda-forge . -k \
             --user $accountName \
             --token $token \
             | tee build.log
