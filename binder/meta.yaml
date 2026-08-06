@@ -1,0 +1,21 @@
+package:
+  name: binder
+  version: v1.4.3
+
+source:
+  - git_url: https://github.com/RosettaCommons/binder.git
+    git_rev: v1.4.3
+    folder: binder
+
+requirements:
+  build:
+  - clang
+  - clangxx
+  - pybind11
+  - cmake
+  - ninja
+
+test:
+  commands:
+    - binder --help
+    - binder --version
