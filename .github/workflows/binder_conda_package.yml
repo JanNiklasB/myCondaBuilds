@@ -24,13 +24,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
       - name: Build and upload conda package
-        uses: uibcdf/action-build-and-upload-conda-packages@v2.0.0
+        uses: uibcdf/action-build-and-upload-conda-packages@v1.5.0
         with:
           meta_yaml_dir: binder/meta.yaml
           user: ${{ secrets.ANACONDA_ACCOUNTNAME }}
           token: ${{ secrets.ANACONDA_TOKEN }}
           overwrite: true
-
+          conda_build_args: "-c conda-forge"
 
   x64:
     runs-on: ubuntu-22.04
@@ -38,12 +38,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
       - name: Build and upload conda package
-        uses: uibcdf/action-build-and-upload-conda-packages@v2.0.0
+        uses: uibcdf/action-build-and-upload-conda-packages@v1.5.0
         with:
           meta_yaml_dir: binder/meta.yaml
           user: ${{ secrets.ANACONDA_ACCOUNTNAME }}
           token: ${{ secrets.ANACONDA_TOKEN }}
           overwrite: true
+          conda_build_args: "-c conda-forge"
 
   macos:
     runs-on: macos-14
@@ -51,9 +52,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
       - name: Build and upload conda package
-        uses: uibcdf/action-build-and-upload-conda-packages@v2.0.0
+        uses: uibcdf/action-build-and-upload-conda-packages@v1.5.0
         with:
           meta_yaml_dir: binder/meta.yaml
           user: ${{ secrets.ANACONDA_ACCOUNTNAME }}
           token: ${{ secrets.ANACONDA_TOKEN }}
           overwrite: true
+          conda_build_args: "-c conda-forge"
