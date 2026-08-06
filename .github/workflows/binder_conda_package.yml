@@ -45,19 +45,19 @@ jobs:
           source ~/miniconda3/bin/activate
           set -ex
           conda init &> /dev/null
-          cd binders
+          cd binder
           conda config --set anaconda_upload yes
           conda build -m conda_build_config.yaml -c conda-forge . -k \
             --user $accountName \
             --token $token \
             | tee build.log
-          if [ $(find ~/miniconda3/conda-bld/linux-aarch64 -name "binders*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
+          if [ $(find ~/miniconda3/conda-bld/linux-aarch64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
       - name: Archive Build Logs
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: "Anaconda_Build_ARM_Log"
-          path: binders/build.log
+          path: binder/build.log
 
   x64:
     runs-on: ubuntu-22.04
@@ -78,19 +78,19 @@ jobs:
         run: |
           set -ex
           conda init &> /dev/null
-          cd binders
+          cd binder
           conda config --set anaconda_upload yes
           conda build -m conda_build_config.yaml -c conda-forge . -k \
             --user $accountName \
             --token $token \
             | tee build.log
-          if [ $(find /usr/share/miniconda/conda-bld/linux-64 -name "binders*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
+          if [ $(find /usr/share/miniconda/conda-bld/linux-64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
       - name: Archive Build Logs
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: "Anaconda_Build_x64_Log"
-          path: binders/build.log
+          path: binder/build.log
 
   macos:
     runs-on: macos-14
@@ -119,16 +119,16 @@ jobs:
         run: |
           source ~/miniconda3/bin/activate
           set -ex
-          cd binders
+          cd binder
           conda config --set anaconda_upload yes
           conda build -m conda_build_config.yaml -c conda-forge . -k \
             --user $accountName \
             --token $token \
             | tee build.log
-          if [ $(find ~/miniconda3/conda-bld/osx-arm64 -name "binders*" | wc -l ) = 1 ]; then echo Success! ; else exit 1; fi
+          if [ $(find ~/miniconda3/conda-bld/osx-arm64 -name "binder*" | wc -l ) = 1 ]; then echo Success! ; else exit 1; fi
       - name: Archive Build Logs
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: "Anaconda_Build_MACOS_Log"
-          path: binders/build.log
+          path: binder/build.log
