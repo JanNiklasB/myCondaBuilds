@@ -18,39 +18,19 @@ on:
   
 
 jobs:
-  arm:
-    runs-on: ubuntu-22.04-arm
+  build_package:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-22.04-arm, macos-14]
+    name: ${{ matrix.os }}_conda_package
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-      - name: Build and upload conda package
-        uses: uibcdf/action-build-and-upload-conda-packages@v1.5.0
+      - name: Conda environment creation and activation
+        uses: conda-incubator/setup-miniconda@v4.0.1
         with:
-          meta_yaml_dir: binder
-          user: ${{ secrets.ANACONDA_ACCOUNTNAME }}
-          token: ${{ secrets.ANACONDA_TOKEN }}
-          overwrite: true
-          conda_build_args: "-c conda-forge"
-
-  x64:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-      - name: Build and upload conda package
-        uses: uibcdf/action-build-and-upload-conda-packages@v1.5.0
-        with:
-          meta_yaml_dir: binder
-          user: ${{ secrets.ANACONDA_ACCOUNTNAME }}
-          token: ${{ secrets.ANACONDA_TOKEN }}
-          overwrite: true
-          conda_build_args: "-c conda-forge"
-
-  macos:
-    runs-on: macos-14
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
+          python-version: 3.13
       - name: Build and upload conda package
         uses: uibcdf/action-build-and-upload-conda-packages@v1.5.0
         with:
