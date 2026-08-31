@@ -3,17 +3,25 @@ package:
   version: v1.4.3
 
 source:
-  - git_url: https://github.com/RosettaCommons/binder.git
-    git_rev: v1.4.3
+  - git_url: https://github.com/JanNiklasB/binder.git
+    git_rev: binder_crpropa
     folder: binder
 
 requirements:
   build:
-  - clang
-  - clangxx
+  - clang==19.1.7
+  - clangxx==19.1.7
   - pybind11
   - cmake
   - ninja
+  - git
+  - zlib
+
+  run:
+  - clang==19.1.7
+  - clangxx==19.1.7
+  - llvm==19.1.7
+  - pybind11
 
 test:
   commands:
