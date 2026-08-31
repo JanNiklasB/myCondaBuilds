@@ -11,8 +11,8 @@ requirements:
   build:
   - {{ compiler('c') }}
   - {{ compiler('cxx') }}
-  - clang==19.1.7
-  - clangxx==19.1.7
+  - clang
+  - clangxx
   - python
   - pybind11
   - cmake
