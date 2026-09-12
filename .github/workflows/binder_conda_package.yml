@@ -32,7 +32,7 @@ jobs:
       - name: Install needed global packages
         run: |
           apt update
-          apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++
+          apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
       - name: Install Additional Conda Packages
         # the path is reseted in each new step:
         run: |
@@ -71,11 +71,10 @@ jobs:
       - name: Install needed global packages
         run: |
           apt update
-          apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++
+          apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
       - name: Preinstall
         run: |
           set -ex
-          ldd --version
           conda init &> /dev/null
           conda update -n base conda -y &> /dev/null
           conda install conda-build anaconda-client -y &> /dev/null
@@ -107,7 +106,7 @@ jobs:
         uses: actions/checkout@v6
       - name: Install needed global packages
         run: |
-          brew install wget coreutils xz pybind11 cmake ninja
+          brew install wget coreutils xz pybind11 cmake ninja git
       - name: Install Miniconda
         run: |
           set -ex
