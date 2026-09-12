@@ -1,7 +1,9 @@
 set -ex
 
-export CC="$BUILD_PREFIX/bin/clang"
-export CXX="$BUILD_PREFIX/bin/clang++"
+if [ $OSTYPE == "darwin" ]; then
+	export CC="$BUILD_PREFIX/bin/clang"
+	export CXX="$BUILD_PREFIX/bin/clang++"
+fi
 
 # build binder:
 cd $SRC_DIR/binder/
