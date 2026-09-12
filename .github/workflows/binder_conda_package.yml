@@ -18,7 +18,7 @@ on:
 
 jobs:
   arm:
-    runs-on: ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -64,7 +64,7 @@ jobs:
           path: binder/build.log
 
   x64:
-    runs-on: ubuntu
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
