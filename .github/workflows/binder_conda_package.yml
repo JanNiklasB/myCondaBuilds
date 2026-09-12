@@ -71,7 +71,7 @@ jobs:
       - name: Install needed global packages
         run: |
           sudo apt update
-          sudo apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git curl
+          sudo apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git curl libcurl4-openssl-dev
       - name: Preinstall
         run: |
           set -ex
@@ -100,7 +100,7 @@ jobs:
           path: binder/build.log
 
   macos:
-    runs-on: macos-26
+    runs-on: macos-14
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
