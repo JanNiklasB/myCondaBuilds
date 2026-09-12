@@ -65,13 +65,15 @@ jobs:
 
   x64:
     runs-on: ubuntu-24.04
+    container:
+      image: ubuntu
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
       - name: Install needed global packages
         run: |
           sudo apt update
-          sudo apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git curl libcurl4-openssl-dev libedit-dev
+          sudo apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
       - name: Preinstall
         run: |
           set -ex
