@@ -8,6 +8,8 @@ source:
     folder: binder
 
 requirements:
+  build:
+  - clang++==19.1.7 # [osx]
 
   run:
   - {{ compiler('c') }}

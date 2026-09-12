@@ -132,6 +132,7 @@ jobs:
           set -ex
           cd binder
           conda config --set anaconda_upload yes
+          export CC=$CONDA_PREFIX/bin/clang++
           conda build -c conda-forge . -k \
             --user $accountName \
             --token $token \
