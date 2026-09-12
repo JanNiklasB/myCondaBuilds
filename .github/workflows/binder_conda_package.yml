@@ -106,7 +106,7 @@ jobs:
         uses: actions/checkout@v6
       - name: Install needed global packages
         run: |
-          brew install wget coreutils xz pybind11 cmake ninja git
+          brew install wget coreutils xz pybind11 cmake ninja git llvm@19
       - name: Install Miniconda
         run: |
           set -ex
