@@ -8,17 +8,6 @@ source:
     folder: binder
 
 requirements:
-  build:
-  - {{ compiler('c') }}
-  - {{ compiler('cxx') }}
-  - clang
-  - clangxx
-  - python
-  - pybind11
-  - cmake
-  - ninja
-  - git
-  - zlib
 
   run:
   - {{ compiler('c') }}
