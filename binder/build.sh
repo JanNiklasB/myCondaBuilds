@@ -1,6 +1,7 @@
 set -ex
 
-export CC="$BUILD_PREFIX/bin/clang++"
+export CC="$BUILD_PREFIX/bin/clang"
+export CXX="$BUILD_PREFIX/bin/clang++"
 
 # build binder:
 cd $SRC_DIR/binder/
