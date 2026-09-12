@@ -74,11 +74,6 @@ jobs:
         run: |
           apt update
           apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
-      - name: Preinstall
-        run: |
-          set -ex
-          conda tos accept
-          conda install conda-build anaconda-client -y &> /dev/null
       - name: Build Conda Package
         env:
           accountName: ${{ secrets.ANACONDA_ACCOUNTNAME }}
@@ -86,6 +81,8 @@ jobs:
         run: |
           set -ex
           cd binder
+          conda tos accept
+          conda install conda-build anaconda-client -y &> /dev/null
           conda config --set anaconda_upload yes
           conda build -c conda-forge . -k \
             --user $accountName \
