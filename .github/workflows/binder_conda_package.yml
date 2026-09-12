@@ -66,7 +66,7 @@ jobs:
   x64:
     runs-on: ubuntu-24.04
     container:
-      image: ubuntu
+      image: anaconda/miniconda
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -77,8 +77,7 @@ jobs:
       - name: Preinstall
         run: |
           set -ex
-          conda init &> /dev/null
-          conda update -n base conda -y &> /dev/null
+          conda tos accept
           conda install conda-build anaconda-client -y &> /dev/null
       - name: Build Conda Package
         env:
@@ -86,7 +85,6 @@ jobs:
           token: ${{ secrets.ANACONDA_TOKEN }}
         run: |
           set -ex
-          conda init &> /dev/null
           cd binder
           conda config --set anaconda_upload yes
           conda build -c conda-forge . -k \
