@@ -104,10 +104,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-      - name: Install needed global packages
-        run: |
-          brew install wget coreutils xz pybind11 cmake ninja git llvm@19
-          brew link llvm@19
       - name: Install Miniconda
         run: |
           set -ex
@@ -132,8 +128,7 @@ jobs:
           set -ex
           cd binder
           conda config --set anaconda_upload yes
-          export CC=$CONDA_PREFIX/bin/clang++
-          conda build -c conda-forge . -k \
+          conda build -c conda-forge -c janniklasb . -k \
             --user $accountName \
             --token $token \
             | tee build.log

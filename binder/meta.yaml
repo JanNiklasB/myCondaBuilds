@@ -9,7 +9,8 @@ source:
 
 requirements:
   build:
-  - clangxx==19.1.7 # [osx]
+  - janniklasb::clang # [osx]
+  - janniklasb::llvm  # [osx]
 
   run:
   - {{ compiler('c') }}
