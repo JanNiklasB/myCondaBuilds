@@ -32,7 +32,7 @@ jobs:
       - name: Install needed global packages
         run: |
           sudo apt update
-          sudo apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
+          sudo apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git curl
       - name: Install Additional Conda Packages
         # the path is reseted in each new step:
         run: |
@@ -71,7 +71,7 @@ jobs:
       - name: Install needed global packages
         run: |
           sudo apt update
-          sudo apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
+          sudo apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git curl
       - name: Preinstall
         run: |
           set -ex

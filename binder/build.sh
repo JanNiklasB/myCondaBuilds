@@ -1,6 +1,6 @@
 set -ex
 
-if [ $OSTYPE == "darwin" ]; then
+if [ $OSTYPE != "linux-gnu" ]; then
 	export CC="$BUILD_PREFIX/bin/clang"
 	export CXX="$BUILD_PREFIX/bin/clang++"
 fi
