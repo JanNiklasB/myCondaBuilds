@@ -1,10 +1,5 @@
 set -ex
 
-if [ $OSTYPE != "linux-gnu" ]; then
-	export CC="$BUILD_PREFIX/bin/clang"
-	export CXX="$BUILD_PREFIX/bin/clang++"
-fi
-
 # build binder:
 cd $SRC_DIR/binder/
 mkdir build && cd build
