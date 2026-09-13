@@ -42,7 +42,7 @@ jobs:
             --user $accountName \
             --token $token \
             | tee build.log
-          if [ $(find $CONDA_PREFIX/conda-bld/linux-aarch64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
+          if [ $(find /opt/miniconda3/conda-bld/linux-aarch64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
       - name: Archive Build Logs
         if: always()
         uses: actions/upload-artifact@v7
@@ -75,7 +75,7 @@ jobs:
             --user $accountName \
             --token $token \
             | tee build.log
-          if [ $(find $CONDA_PREFIX/conda-bld/linux-64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
+          if [ $(find /opt/miniconda3/conda-bld/linux-64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
       - name: Archive Build Logs
         if: always()
         uses: actions/upload-artifact@v7
