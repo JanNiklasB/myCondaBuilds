@@ -1,6 +1,6 @@
 package:
   name: binder
-  version: v1.4.3
+  version: v1.4.4
 
 source:
   - git_url: https://github.com/JanNiklasB/binder.git
@@ -12,6 +12,8 @@ build:
     - PATH  # [osx]
 
 requirements:
+  host:
+  - cmake
 
   run:
   - {{ compiler('c') }}
@@ -22,6 +24,10 @@ requirements:
   - pybind11
 
 test:
+  requires:
+    - cmake
+  files:
+    - testProject/
   commands:
     - binder --help
     - binder --version
