@@ -1,6 +1,6 @@
 package:
   name: binder
-  version: v1.4.4
+  version: v1.4.5
 
 source:
   - git_url: https://github.com/JanNiklasB/binder.git
