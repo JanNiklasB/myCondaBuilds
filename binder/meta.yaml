@@ -17,6 +17,7 @@ requirements:
 
   run:
   - cmake
+  - ninja
   - {{ compiler('c') }}
   - {{ compiler('cxx') }}
   - clang==19.1.7
@@ -25,8 +26,6 @@ requirements:
   - pybind11
 
 test:
-  requires:
-    - cmake
   files:
     - testProject/
   commands:
