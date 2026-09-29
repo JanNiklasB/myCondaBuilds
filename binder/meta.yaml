@@ -16,6 +16,7 @@ requirements:
   - cmake
 
   run:
+  - cmake
   - {{ compiler('c') }}
   - {{ compiler('cxx') }}
   - clang==19.1.7
