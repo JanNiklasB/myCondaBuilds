@@ -23,7 +23,7 @@ requirements:
   - clang==19.1.7
   - clangxx==19.1.7
   - llvm==19.1.7
-  - pybind11
+  - pybind11>3
 
 test:
   files:
