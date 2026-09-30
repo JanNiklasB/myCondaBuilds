@@ -43,7 +43,7 @@ test:
     - binder --version
 
 about:
-  home: 
+  home: https://github.com/JanNiklasB/CRPropa_Pybind11_Bindings
   license_file: binder/LICENSE
   license_url: https://github.com/JanNiklasB/binder/blob/binder_crpropa/LICENSE
   summary: This is a the conda package for https://github.com/JanNiklasB/binder/tree/binder_crpropa
