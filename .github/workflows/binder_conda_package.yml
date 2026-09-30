@@ -17,71 +17,71 @@ on:
   workflow_dispatch:
 
 jobs:
-  arm:
-    runs-on: ubuntu-24.04-arm
-    container:
-      image: anaconda/miniconda
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-      - name: Install needed global packages
-        run: |
-          apt update
-          apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
-      - name: Build Conda Package
-        env:
-          accountName: ${{ secrets.ANACONDA_ACCOUNTNAME }}
-          token: ${{ secrets.ANACONDA_TOKEN }}
-        run: |
-          set -ex
-          cd binder
-          conda tos accept
-          conda install conda-build anaconda-client -y
-          conda config --set anaconda_upload yes
-          conda build -c conda-forge . -k \
-            --user $accountName \
-            --token $token \
-            | tee build.log
-          if [ $(find /opt/miniconda3/conda-bld/linux-aarch64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
-      - name: Archive Build Logs
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: "Anaconda_Build_ARM_Log"
-          path: binder/build.log
+  # arm:
+  #   runs-on: ubuntu-24.04-arm
+  #   container:
+  #     image: anaconda/miniconda
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v6
+  #     - name: Install needed global packages
+  #       run: |
+  #         apt update
+  #         apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
+  #     - name: Build Conda Package
+  #       env:
+  #         accountName: ${{ secrets.ANACONDA_ACCOUNTNAME }}
+  #         token: ${{ secrets.ANACONDA_TOKEN }}
+  #       run: |
+  #         set -ex
+  #         cd binder
+  #         conda tos accept
+  #         conda install conda-build anaconda-client -y
+  #         conda config --set anaconda_upload yes
+  #         conda build -c conda-forge . -k \
+  #           --user $accountName \
+  #           --token $token \
+  #           | tee build.log
+  #         if [ $(find /opt/miniconda3/conda-bld/linux-aarch64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
+  #     - name: Archive Build Logs
+  #       if: always()
+  #       uses: actions/upload-artifact@v7
+  #       with:
+  #         name: "Anaconda_Build_ARM_Log"
+  #         path: binder/build.log
 
-  x64:
-    runs-on: ubuntu-24.04
-    container:
-      image: anaconda/miniconda
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-      - name: Install needed global packages
-        run: |
-          apt update
-          apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
-      - name: Build Conda Package
-        env:
-          accountName: ${{ secrets.ANACONDA_ACCOUNTNAME }}
-          token: ${{ secrets.ANACONDA_TOKEN }}
-        run: |
-          set -ex
-          cd binder
-          conda tos accept
-          conda install conda-build anaconda-client -y
-          conda config --set anaconda_upload yes
-          conda build -c conda-forge . -k \
-            --user $accountName \
-            --token $token \
-            | tee build.log
-          if [ $(find /opt/miniconda3/conda-bld/linux-64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
-      - name: Archive Build Logs
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: "Anaconda_Build_x64_Log"
-          path: binder/build.log
+  # x64:
+  #   runs-on: ubuntu-24.04
+  #   container:
+  #     image: anaconda/miniconda
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v6
+  #     - name: Install needed global packages
+  #       run: |
+  #         apt update
+  #         apt install -y clang-19 llvm-19 libclang-19-dev llvm-19-dev cmake ninja-build pybind11-dev gcc g++ git
+  #     - name: Build Conda Package
+  #       env:
+  #         accountName: ${{ secrets.ANACONDA_ACCOUNTNAME }}
+  #         token: ${{ secrets.ANACONDA_TOKEN }}
+  #       run: |
+  #         set -ex
+  #         cd binder
+  #         conda tos accept
+  #         conda install conda-build anaconda-client -y
+  #         conda config --set anaconda_upload yes
+  #         conda build -c conda-forge . -k \
+  #           --user $accountName \
+  #           --token $token \
+  #           | tee build.log
+  #         if [ $(find /opt/miniconda3/conda-bld/linux-64 -name "binder*" | wc -l) = 1 ]; then echo Success! ; else exit 1; fi
+  #     - name: Archive Build Logs
+  #       if: always()
+  #       uses: actions/upload-artifact@v7
+  #       with:
+  #         name: "Anaconda_Build_x64_Log"
+  #         path: binder/build.log
 
   macos:
     runs-on: macos-14
@@ -92,9 +92,9 @@ jobs:
         run: |
           set -x
           brew install wget
-          wget --no-verbose https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang+llvm-14.0.6-x86_64-apple-darwin.tar.xz
+          wget --no-verbose https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang+llvm-14.0.6-arm64-apple-darwin22.3.0.tar.xz
           ls
-          tar -xJf clang+llvm-14.0.6-x86_64-apple-darwin.tar.xz
+          tar -xJf clang+llvm-14.0.6-arm64-apple-darwin22.3.0.tar.xz
       - name: Install Miniconda
         run: |
           set -x
@@ -116,7 +116,7 @@ jobs:
           source ~/miniconda3/bin/activate
           set -x
           ls
-          export ADDPATH=$(realpath clang+llvm-14.0.6-x86_64-apple-darwin/bin)
+          export ADDPATH=$(realpath clang+llvm-14.0.6-arm64-apple-darwin22.3.0/bin)
           cd binder
           conda config --set anaconda_upload yes
           conda build -c conda-forge . -k \
