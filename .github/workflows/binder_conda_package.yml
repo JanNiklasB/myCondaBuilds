@@ -91,10 +91,10 @@ jobs:
       - name: Install needed global packages
         run: |
           set -x
-          brew install wget coreutils xz pybind11 git
-          wget --no-verbose https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.5/clang+llvm-14.0.5-x86_64-apple-darwin.tar.xz
+          brew install wget
+          wget --no-verbose https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang+llvm-14.0.6-x86_64-apple-darwin.tar.xz
           ls
-          tar -xJf clang+llvm-14.0.5-x86_64-apple-darwin.tar.xz
+          tar -xJf clang+llvm-14.0.6-x86_64-apple-darwin.tar.xz
       - name: Install Miniconda
         run: |
           set -x
@@ -116,7 +116,7 @@ jobs:
           source ~/miniconda3/bin/activate
           set -x
           ls
-          export ADDPATH=$(realpath clang+llvm-14.0.5-x86_64-apple-darwin/bin)
+          export ADDPATH=$(realpath clang+llvm-14.0.6-x86_64-apple-darwin/bin)
           cd binder
           conda config --set anaconda_upload yes
           conda build -c conda-forge . -k \

@@ -12,10 +12,17 @@ build:
     - ADDPATH  # [osx]
 
 requirements:
-  host:
-  - cmake
+  build:
+  - coreutils  # [osx]
+  - xz  # [osx]
+  - pybind11  # [osx]
+  - git  # [osx]
+  - cmake  # [osx]
+  - ninja  # [osx]
 
   run:
+  # - coreutils  # [osx]
+  # - xz  # [osx]
   - cmake
   - ninja
   - {{ compiler('c') }}
@@ -23,9 +30,9 @@ requirements:
   - clang==19.1.7  # [linux]
   - clangxx==19.1.7  # [linux]
   - llvm==19.1.7  # [linux]
-  - clang==14.0.5  # [osx]
-  - clangxx==14.0.5  # [osx]
-  - llvm==14.0.5  # [osx]
+  - clang==14.0.6  # [osx]
+  - clangxx==14.0.6  # [osx]
+  - llvm==14.0.6  # [osx]
   - pybind11>3
 
 test:

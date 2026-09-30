@@ -1,6 +1,7 @@
 set -ex
 # add $ADDPATH to $PATH
 export PATH=$PATH:$ADDPATH
+OS=$(uname)
 
 # build binder:
 cd $SRC_DIR/binder/
@@ -13,7 +14,16 @@ cp $(find $SRC_DIR/binder/ -name binder -type f) $PREFIX/bin/
 
 cmake_root_dir=$PREFIX/share/cppbinder/Modules
 mkdir -p "${cmake_root_dir}"
-cp --recursive --target-directory "${cmake_root_dir}" \
-	$SRC_DIR/binder/cmake/cppbinder/ \
-	$SRC_DIR/binder/cmake/cppbinder.cmake \
-	$SRC_DIR/binder/cmake/Findcppbinder.cmake
+
+if [ $OS = "Linux" ]; then
+	cp --recursive --target-directory "${cmake_root_dir}" \
+		$SRC_DIR/binder/cmake/cppbinder/ \
+		$SRC_DIR/binder/cmake/cppbinder.cmake \
+		$SRC_DIR/binder/cmake/Findcppbinder.cmake
+elif [ $OS = "Darwin" ]; then
+	cp -R \
+		$SRC_DIR/binder/cmake/cppbinder/ \
+		$SRC_DIR/binder/cmake/cppbinder.cmake \
+		$SRC_DIR/binder/cmake/Findcppbinder.cmake \
+		"${cmake_root_dir}"
+fi
