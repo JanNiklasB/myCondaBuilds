@@ -1,4 +1,6 @@
 set -ex
+# add $ADDPATH to $PATH
+export PATH=$PATH:$ADDPATH
 
 # build binder:
 cd $SRC_DIR/binder/

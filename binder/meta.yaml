@@ -9,7 +9,7 @@ source:
 
 build:
   script_env:
-    - PATH  # [osx]
+    - ADDPATH  # [osx]
 
 requirements:
   host:
@@ -20,9 +20,12 @@ requirements:
   - ninja
   - {{ compiler('c') }}
   - {{ compiler('cxx') }}
-  - clang==19.1.7
-  - clangxx==19.1.7
-  - llvm==19.1.7
+  - clang==19.1.7  # [linux]
+  - clangxx==19.1.7  # [linux]
+  - llvm==19.1.7  # [linux]
+  - clang==14.0.5  # [osx]
+  - clangxx==14.0.5  # [osx]
+  - llvm==14.0.5  # [osx]
   - pybind11>3
 
 test:
