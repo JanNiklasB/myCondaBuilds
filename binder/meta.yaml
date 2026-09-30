@@ -41,3 +41,19 @@ test:
   commands:
     - binder --help
     - binder --version
+
+about:
+  home: 
+  license_file: ../LICENSE
+  license_url: https://github.com/CRPropa/CRPropa3/blob/master/LICENSE
+  summary: This is a the conda package for https://github.com/JanNiklasB/binder/tree/binder_crpropa
+  description: |
+    This package is a custom version of https://github.com/RosettaCommons/binder Version 1.4.3.
+    It includes some needed bugfixes and adjustments needed for the python bindings of https://github.com/CRPropa/CRPropa3
+    over https://github.com/JanNiklasB/CRPropa_Pybind11_Bindings .
+    It should work (and has in the past) also for other projects.
+    This package also includes a cmake module (cppbinder) with enables simple integration of binder bindings in existing projects
+    (see https://github.com/JanNiklasB/CRPropa_Pybind11_Bindings for a detailed usage info).
+  dev_url: https://github.com/RosettaCommons/binder
+  doc_url: https://github.com/JanNiklasB/CRPropa_Pybind11_Bindings
+  doc_source_url: https://github.com/JanNiklasB/CRPropa_Pybind11_Bindings/README.md
