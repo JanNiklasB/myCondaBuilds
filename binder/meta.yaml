@@ -45,7 +45,7 @@ test:
 about:
   home: 
   license_file: binder/LICENSE
-  license_url: https://github.com/CRPropa/CRPropa3/blob/master/LICENSE
+  license_url: https://github.com/JanNiklasB/binder/blob/binder_crpropa/LICENSE
   summary: This is a the conda package for https://github.com/JanNiklasB/binder/tree/binder_crpropa
   description: |
     This package is a custom version of https://github.com/RosettaCommons/binder Version 1.4.3.
